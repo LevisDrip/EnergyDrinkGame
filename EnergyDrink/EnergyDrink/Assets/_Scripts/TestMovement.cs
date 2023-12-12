@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TestMovement : MonoBehaviour
 {
-    //
+    //takes care of the movement of the player
     public float moveSpeed;
-    private Vector2 move;
+    private Rigidbody2D rigidBody;
 
     void Start()
     {
-        
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -18,8 +18,10 @@ public class TestMovement : MonoBehaviour
         Movement();
     }
 
-    private void Movement()
+    public void Movement()
     {
-        
+        float moveX = Input.GetAxis("Horizontal");
+
+        rigidBody.velocity = new Vector2(moveX * moveSpeed, 0);
     }
 }
