@@ -9,6 +9,7 @@ public class ObstacleManager : MonoBehaviour
 
     //these bools check what type of obstacle it is, so we dont need a script for every type of obstacle
     public bool isMovingObstacle;
+    public bool isTrapObstacle;
 
     //needed for moving obstacle
     public bool reachedHighestPoint;
