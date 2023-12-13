@@ -31,28 +31,26 @@ public class ObstacleManager : MonoBehaviour
 
     public void movingObstacle()
     {
-        if (obstaclePosition.position.y == 5)
+        if (obstaclePosition.position.y >= 5)
         {
             reachedHighestPoint = true;
             reachedLowestPoint = false;
         }
 
-        if (obstaclePosition.position.y == -2.5f)
+        if (obstaclePosition.position.y <= -2.5f)
         {
             reachedHighestPoint = false;
             reachedLowestPoint = true;
-
-            Debug.Log("at lowest point");
         }
 
         if (reachedHighestPoint)
         {
-            transform.position += -transform.up * 1 * Time.deltaTime;
+            transform.position += -transform.up * 5 * Time.deltaTime;
         }  
 
         if (reachedLowestPoint)
         {
-            transform.position += transform.up * 1 * Time.deltaTime;
+            transform.position += transform.up * 5 * Time.deltaTime;
         }
     }
 }
