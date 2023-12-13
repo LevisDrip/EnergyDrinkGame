@@ -446,7 +446,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4377069e4d6de84d94afb07a9bb4bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  MoveSpeed: 5
+  JumpStrenght: 300
+  IsGrounded: 0
+  HasSlided: 0
+  SlideCoolDown: 0
 --- !u!50 &1162775280
 Rigidbody2D:
   serializedVersion: 4
@@ -473,7 +477,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &1162775281
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -516,7 +520,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162775276}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9182db79628f6394dba60bfe5d7115d7, type: 3}
   m_Name: 

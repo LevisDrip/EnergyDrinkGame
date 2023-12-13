@@ -10,23 +10,40 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsGrounded;
     public bool HasSlided;
+    //public bool isFullSize;
 
     public float SlideCoolDown;
+    //public float sizeCoolDown;
 
     private Rigidbody2D rigidBody;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
 
         SlideCoolDown = 2;
+        //isFullSize = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        SlideCoolDown -= Time.deltaTime;
+        if (SlideCoolDown > 0)
+        {
+            SlideCoolDown -= Time.deltaTime;
+        }
+        else
+        {
+            SlideCoolDown = 0;
+        }
+
+        //if (sizeCoolDown > 0)
+        //{
+        //    SlideCoolDown -= Time.deltaTime;
+        //}
+        //else
+        //{
+        //    sizeCoolDown = 0;
+        //}
 
         Movement();
     }
@@ -42,13 +59,17 @@ public class PlayerMovement : MonoBehaviour
             rigidBody.AddForce(transform.up * JumpStrenght);
         }
 
-        if (Input.GetButtonDown("Slide") && !HasSlided)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !HasSlided)
         {
-            Debug.Log("Slidin'");
+            Debug.Log("Slidin");
 
             
-            rigidBody.AddForce(transform.right * (MoveSpeed * 400));
+            rigidBody.AddForce(transform.right * (MoveSpeed * 50));
 
+            //transform.localScale *= 0.5f;
+            //transform.localPosition = new Vector2(0, -3.495f);
+
+            //sizeCoolDown = 0.75f;
             
 
             SlideCoolDown = 2;
@@ -56,12 +77,21 @@ public class PlayerMovement : MonoBehaviour
             
 
             HasSlided = true;
+            //isFullSize = false;
         }
 
         if (SlideCoolDown <= 0)
         {
             HasSlided = false;
         }
+
+        //if (sizeCoolDown <= 0 && !isFullSize)
+        //{
+        //    transform.localScale *= 2;
+        //    transform.localPosition = new Vector2(0, -2.995001f);
+
+        //    isFullSize = true;
+        //}
 
     }
 
