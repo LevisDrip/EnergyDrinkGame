@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - SpikeObstacle
+  - BeartrapObstacle
   - Floor
   layers:
   - Default
