@@ -19,7 +19,10 @@ public class PlayerMovement : MonoBehaviour
     public float Sliding = 2;
 
     public float LimitX;
-    
+
+    public int escapeBearTrapNumber = 1;
+    public bool isStuck;
+
 
     private Rigidbody2D rigidBody;
 
@@ -46,6 +49,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Sliding -= Time.deltaTime;
+
+        if (isStuck && Input.GetKeyDown(KeyCode.Space))
+        {
+            escapeBearTrapNumber--;
+        }
 
 
         Movement();
@@ -101,13 +109,29 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Touching floor");
         IsGrounded = true;
 
-        if(collision.gameObject.tag == "BackCam")
+        if(collision.gameObject.tag == "BackCam" && !isStuck)
         {
             Speed += 0.5f;
         }
 
-        
-        
+        if (collision.gameObject.tag == "BeartrapObstacle" && !isStuck)
+        {
+            Debug.Log("stucked");
+
+            Speed = 0;
+            JumpStrenght = 0;
+
+            //transform.position = new Vector2(collision.transform.position.x, -6.045001f);
+
+            isStuck = true;
+            
+
+            escapeBearTrapNumber += Random.Range(2, 5);
+
+        }
+
+       
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -121,14 +145,36 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
+
+        if (Speed <= 0 && escapeBearTrapNumber <= 0)
+        {
+            if(collision.gameObject.tag == "BeartrapObstacle")
+            {
+                Destroy(collision.gameObject);
+                Debug.Log("Trap should be destroyed");
+            }
+
+            
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "FrontCam" || collision.gameObject.tag == "BackCam")
+        if (collision.gameObject.tag == "FrontCam" || collision.gameObject.tag == "BackCam" && !isStuck)
         {
             Speed = MoveSpeed;
         }
+
+
+        if(collision.gameObject.tag == "BeartrapObstacle" && isStuck)
+        {
+            Debug.Log("Unstucked");
+
+            isStuck = false;
+            Speed = MoveSpeed;
+            JumpStrenght = 300;
+        }
+        
     }
 
 }

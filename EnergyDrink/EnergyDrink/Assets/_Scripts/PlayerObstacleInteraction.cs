@@ -9,8 +9,8 @@ public class PlayerObstacleInteraction : MonoBehaviour
 
     //needed for beartrap interaction
     public PlayerMovement playerMovementScript;
-    public int escapeBearTrapNumber = 1;
-    public bool isStuck;
+    //public int escapeBearTrapNumber = 1;
+    //public bool isStuck;
 
     public float TimeTillRandom;
 
@@ -25,10 +25,10 @@ public class PlayerObstacleInteraction : MonoBehaviour
     void Update()
     {
 
-        if (isStuck && Input.GetKeyDown(KeyCode.Space))
-        {
-            escapeBearTrapNumber--;
-        }
+        //if (isStuck && Input.GetKeyDown(KeyCode.Space))
+       // {
+        //    escapeBearTrapNumber--;
+       // }
 
         TimeTillRandom -= Time.deltaTime;
     }
@@ -43,34 +43,29 @@ public class PlayerObstacleInteraction : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("BeartrapObstacle"))
-        {
-            transform.position = new Vector2(collision.transform.position.x, -6.045001f);
+        //if (collision.gameObject.CompareTag("BeartrapObstacle"))
+        //{
+        //    transform.position = new Vector2(collision.transform.position.x, -6.045001f);
 
-            isStuck = true;
-            playerMovementScript.Speed = 0;
-            playerMovementScript.JumpStrenght = 0;
+        //    isStuck = true;
+        //    playerMovementScript.Speed = 0;
+        //    playerMovementScript.JumpStrenght = 0;
 
-            TimeTillRandom = 0.5f;
-
-            if(TimeTillRandom <= 0)
-            {
-                escapeBearTrapNumber += Random.Range(2, 5);
-            }
+        //    escapeBearTrapNumber += Random.Range(2, 5);
             
-        }
+        //}
 
-        if (playerMovementScript.Speed <= 0 && escapeBearTrapNumber <= 0)
-        {
-            Destroy(collision.gameObject);
-            Debug.Log("Trap should be destroyed");
-        }
+        //if (playerMovementScript.Speed <= 0 && escapeBearTrapNumber <= 0)
+        //{
+        //    Destroy(collision.gameObject);
+        //    Debug.Log("Trap should be destroyed");
+        //}
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isStuck = false;
-        playerMovementScript.Speed = playerMovementScript.MoveSpeed;
-        playerMovementScript.JumpStrenght = 300;
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    isStuck = false;
+    //    playerMovementScript.Speed = playerMovementScript.MoveSpeed;
+    //    playerMovementScript.JumpStrenght = 300;
+    //}
 }
