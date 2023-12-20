@@ -9,33 +9,28 @@ public class PlayerObstacleInteraction : MonoBehaviour
 
     //needed for beartrap interaction
     public PlayerMovement playerMovementScript;
-    public int escapeBearTrapNumber;
+    public int escapeBearTrapNumber = 1;
     public bool isStuck;
+
+    public float TimeTillRandom;
 
     void Start()
     {
+
+
         //sets the position where the player spawns in as the Vector3 for when it hits a spike obstacle
         startPosition = transform.position;
     }
 
     void Update()
     {
-        if (escapeBearTrapNumber >= 1)
-        {
-            isStuck = true;
-            playerMovementScript.MoveSpeed = 0;
-            playerMovementScript.JumpStrenght = 0;
-        }
 
         if (isStuck && Input.GetKeyDown(KeyCode.Space))
         {
             escapeBearTrapNumber--;
         }
 
-        if(playerMovementScript.MoveSpeed == 0)
-        {
-            Debug.Log("speed is 0"); 
-        }
+        TimeTillRandom -= Time.deltaTime;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -51,10 +46,21 @@ public class PlayerObstacleInteraction : MonoBehaviour
         if (collision.gameObject.CompareTag("BeartrapObstacle"))
         {
             transform.position = new Vector2(collision.transform.position.x, -6.045001f);
-            //escapeBearTrapNumber += 3;
+
+            isStuck = true;
+            playerMovementScript.Speed = 0;
+            playerMovementScript.JumpStrenght = 0;
+
+            TimeTillRandom = 0.5f;
+
+            if(TimeTillRandom <= 0)
+            {
+                escapeBearTrapNumber += Random.Range(2, 5);
+            }
+            
         }
 
-        if (playerMovementScript.MoveSpeed == 0 && escapeBearTrapNumber == 0)
+        if (playerMovementScript.Speed <= 0 && escapeBearTrapNumber <= 0)
         {
             Destroy(collision.gameObject);
             Debug.Log("Trap should be destroyed");
@@ -64,7 +70,7 @@ public class PlayerObstacleInteraction : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         isStuck = false;
-        playerMovementScript.MoveSpeed = 5;
+        playerMovementScript.Speed = playerMovementScript.MoveSpeed;
         playerMovementScript.JumpStrenght = 300;
     }
 }
