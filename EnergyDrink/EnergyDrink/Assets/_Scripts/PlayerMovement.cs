@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float Speed;
     public float MoveSpeed;
+
 
     public float JumpStrenght;
 
     public bool IsGrounded;
     public bool HasSlided;
-    
+
+    public Camera cam;
 
     public float SlideCoolDown;
+    public float Sliding = 2;
 
     public float LimitX;
     
@@ -41,15 +45,17 @@ public class PlayerMovement : MonoBehaviour
             SlideCoolDown = 0;
         }
 
-        
+        Sliding -= Time.deltaTime;
+
 
         Movement();
     }
 
     public void Movement()
     {
-        transform.position += transform.right * MoveSpeed * Time.deltaTime;
-        
+        transform.position += transform.right * Speed * Time.deltaTime;
+
+        cam.transform.position += transform.right * MoveSpeed * Time.deltaTime;
 
         if (Input.GetButtonDown("Jump") && IsGrounded)
         {
@@ -63,8 +69,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Slidin");
 
+            Sliding = 2;
             
-            rigidBody.AddForce(transform.right * (MoveSpeed * 50));
+            rigidBody.AddForce(transform.right * (Speed * 50));
 
             TargetRotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 80);
            
@@ -72,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
             
             
 
-            SlideCoolDown = 2;
+            SlideCoolDown = 3;
 
             
 
@@ -93,8 +100,35 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Touching floor");
         IsGrounded = true;
+
+        if(collision.gameObject.tag == "BackCam")
+        {
+            Speed += 0.5f;
+        }
+
+        
+        
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "FrontCam")
+        {
 
+            if (Sliding <= 0)
+            {
+                Speed -= 1;
+            }
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "FrontCam" || collision.gameObject.tag == "BackCam")
+        {
+            Speed = MoveSpeed;
+        }
+    }
 
 }

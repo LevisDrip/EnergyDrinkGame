@@ -7,6 +7,8 @@ TagManager:
   - SpikeObstacle
   - BeartrapObstacle
   - Floor
+  - BackCam
+  - FrontCam
   layers:
   - Default
   - TransparentFX
