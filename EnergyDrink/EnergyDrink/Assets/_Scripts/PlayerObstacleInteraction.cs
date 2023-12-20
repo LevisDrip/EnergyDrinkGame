@@ -20,20 +20,21 @@ public class PlayerObstacleInteraction : MonoBehaviour
 
     void Update()
     {
-        if (escapeBearTrapNumber < 1)
+        if (escapeBearTrapNumber >= 1)
         {
             isStuck = true;
             playerMovementScript.MoveSpeed = 0;
-        }
-        else
-        {
-            isStuck = false;
-            playerMovementScript.MoveSpeed = 5;
+            playerMovementScript.JumpStrenght = 0;
         }
 
         if (isStuck && Input.GetKeyDown(KeyCode.Space))
         {
             escapeBearTrapNumber--;
+        }
+
+        if(playerMovementScript.MoveSpeed == 0)
+        {
+            Debug.Log("speed is 0"); 
         }
     }
 
@@ -49,8 +50,21 @@ public class PlayerObstacleInteraction : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("BeartrapObstacle"))
         {
-            transform.position = collision.transform.position;
-            escapeBearTrapNumber += 3;
+            transform.position = new Vector2(collision.transform.position.x, -6.045001f);
+            //escapeBearTrapNumber += 3;
         }
+
+        if (playerMovementScript.MoveSpeed == 0 && escapeBearTrapNumber == 0)
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("Trap should be destroyed");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isStuck = false;
+        playerMovementScript.MoveSpeed = 5;
+        playerMovementScript.JumpStrenght = 300;
     }
 }
