@@ -10,7 +10,7 @@ public class PlayerObstacleInteraction : MonoBehaviour
     //needed for beartrap interaction
     public PlayerMovement playerMovementScript;
     //public int escapeBearTrapNumber = 1;
-    //public bool isStuck;
+    public bool isStuck;
 
     public float TimeTillRandom;
 
