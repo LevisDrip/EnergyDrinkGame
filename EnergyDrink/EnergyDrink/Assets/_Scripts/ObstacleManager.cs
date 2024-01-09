@@ -14,6 +14,9 @@ public class ObstacleManager : MonoBehaviour
     public bool reachedHighestPoint;
     public bool reachedLowestPoint;
 
+    public float highestPoint;
+    public float lowestPoint;
+
 
 
     void Start()
@@ -32,13 +35,13 @@ public class ObstacleManager : MonoBehaviour
 
     public void movingObstacle()
     {
-        if (obstaclePosition.position.y >= 5)
+        if (obstaclePosition.position.y >= highestPoint)
         {
             reachedHighestPoint = true;
             reachedLowestPoint = false;
         }
 
-        if (obstaclePosition.position.y <= -2.5f)
+        if (obstaclePosition.position.y <= lowestPoint)
         {
             reachedHighestPoint = false;
             reachedLowestPoint = true;
