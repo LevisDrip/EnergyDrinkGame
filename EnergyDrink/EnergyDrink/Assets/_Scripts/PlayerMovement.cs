@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float Speed;
     public float MoveSpeed;
 
+    public Sprite BearTrapClosed;
 
     public float JumpStrenght;
 
@@ -111,11 +112,11 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Touching floor");
         IsGrounded = true;
 
-       
-
         if (collision.gameObject.tag == "BeartrapObstacle" && !isStuck)
         {
             Debug.Log("stucked");
+
+            
 
             Speed = 0;
             JumpStrenght = 0;
