@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        Speed = MoveSpeed;
+
         rigidBody = GetComponent<Rigidbody2D>();
 
         SlideCoolDown = 2;
@@ -109,10 +111,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Touching floor");
         IsGrounded = true;
 
-        if(collision.gameObject.tag == "BackCam" && !isStuck)
-        {
-            Speed += 0.5f;
-        }
+       
 
         if (collision.gameObject.tag == "BeartrapObstacle" && !isStuck)
         {
@@ -145,6 +144,14 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
+       else  if (collision.gameObject.tag == "BackCam" && !isStuck)
+        {
+            Debug.Log("BackCam");
+
+            Speed += 0.01f;
+        }
+
+
 
         if (Speed <= 0 && escapeBearTrapNumber <= 0)
         {
