@@ -130,7 +130,14 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-       
+        if (collision.gameObject.tag == "Energy")
+        {
+            Debug.Log("Can Event");
+
+            Destroy(collision.gameObject);
+            MoveSpeed += 0.5f;
+            Speed = MoveSpeed;
+        }
 
     }
 
@@ -146,13 +153,13 @@ public class PlayerMovement : MonoBehaviour
 
         }
        else  if (collision.gameObject.tag == "BackCam" && !isStuck)
-        {
+       {
             Debug.Log("BackCam");
 
             Speed += 0.01f;
-        }
+       }
 
-
+        
 
         if (Speed <= 0 && escapeBearTrapNumber <= 0)
         {
@@ -180,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
 
             isStuck = false;
             Speed = MoveSpeed;
-            JumpStrenght = 300;
+            JumpStrenght = 550;
         }
         
     }
