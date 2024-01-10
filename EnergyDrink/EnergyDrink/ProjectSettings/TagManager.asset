@@ -3,20 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - SpikeObstacle
-  - BeartrapObstacle
-  - Floor
-  - BackCam
-  - FrontCam
-<<<<<<< Updated upstream
-  - Energy
-=======
-  - World2Start
-  - World3Start
-  - World4Start
-  - World5Start
->>>>>>> Stashed changes
+  tags: []
   layers:
   - Default
   - TransparentFX
