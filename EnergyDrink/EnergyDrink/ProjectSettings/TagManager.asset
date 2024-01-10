@@ -9,7 +9,14 @@ TagManager:
   - Floor
   - BackCam
   - FrontCam
+<<<<<<< Updated upstream
   - Energy
+=======
+  - World2Start
+  - World3Start
+  - World4Start
+  - World5Start
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

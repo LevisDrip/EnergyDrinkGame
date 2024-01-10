@@ -6,6 +6,7 @@ public class SpriteManager : MonoBehaviour
 {
     public int currentWorld;
     public Animator animator;
+    public PlayerMovement playerMovement;
 
     void Start()
     {
@@ -14,7 +15,25 @@ public class SpriteManager : MonoBehaviour
 
     void Update()
     {
-        
+        if(playerMovement.IsGrounded)
+        {
+            animator.SetBool("IsGrounded", true);
+        }
+        else
+        {
+            animator.SetBool("IsGrounded", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            animator.SetTrigger("Slide");
+            Invoke("stopSliding", 1f);
+        }
+    }
+
+    void stopSliding()
+    {
+        animator.ResetTrigger("Slide");
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
