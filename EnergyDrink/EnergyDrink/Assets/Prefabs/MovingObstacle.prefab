@@ -49,8 +49,8 @@ MonoBehaviour:
   isMovingObstacle: 1
   reachedHighestPoint: 0
   reachedLowestPoint: 0
-  highestPoint: 5
-  lowestPoint: -2.5
+  highestPoint: 0
+  lowestPoint: -6
 --- !u!212 &8210926263689755658
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -148,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Sliding <= 0)
             {
-                Speed -= 1;
+                Speed -= 0.1f;
             }
 
         }
