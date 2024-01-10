@@ -130,6 +130,12 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+        if(collision.gameObject.tag == "SpikeObstacle" || collision.gameObject.tag == "OutOfBounds")
+        {
+            MoveSpeed = 0;
+            Destroy(gameObject);    
+        }
+
         if (collision.gameObject.tag == "Energy")
         {
             Debug.Log("Can Event");
