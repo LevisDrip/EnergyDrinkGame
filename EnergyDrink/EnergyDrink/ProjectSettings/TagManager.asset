@@ -11,6 +11,10 @@ TagManager:
   - Energy
   - BeartrapObstacle
   - OutOfBounds
+  - World2Start
+  - World3Start
+  - World4Start
+  - World5Start
   layers:
   - Default
   - TransparentFX

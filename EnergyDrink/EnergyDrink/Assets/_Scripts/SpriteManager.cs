@@ -10,7 +10,8 @@ public class SpriteManager : MonoBehaviour
 
     void Start()
     {
-        currentWorld = 1; 
+        currentWorld = 1;
+        animator.SetInteger("World", currentWorld);
     }
 
     void Update()
@@ -24,10 +25,10 @@ public class SpriteManager : MonoBehaviour
             animator.SetBool("IsGrounded", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && playerMovement.SlideCoolDown <= 0)
         {
             animator.SetTrigger("Slide");
-            Invoke("stopSliding", 1f);
+            Invoke("stopSliding", 2f);
         }
     }
 
