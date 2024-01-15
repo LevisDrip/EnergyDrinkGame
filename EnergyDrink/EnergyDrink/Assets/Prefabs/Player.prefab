@@ -197,6 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5469127693707310078}
   - component: {fileID: 1687610339035688775}
+  - component: {fileID: 6863298750634252022}
   - component: {fileID: 222582622485017896}
   - component: {fileID: 648943982121844973}
   - component: {fileID: 4039244633382201355}
@@ -249,6 +250,21 @@ MonoBehaviour:
   LimitX: 0.51
   escapeBearTrapNumber: 1
   isStuck: 0
+--- !u!114 &6863298750634252022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456485008002531292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31379b573472acf46ba428f290999857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWorld: 0
+  animator: {fileID: 8790134421504568358}
+  playerMovement: {fileID: 1687610339035688775}
 --- !u!114 &222582622485017896
 MonoBehaviour:
   m_ObjectHideFlags: 0
