@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
             
             
 
-            SlideCoolDown = 3;
+            SlideCoolDown = 2;
 
             
 
@@ -152,9 +152,9 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "FrontCam")
         {
 
-            if (Sliding <= 0)
+            if (Sliding <= 1.5f)
             {
-                Speed -= 0.1f;
+                Speed -= 1f;
             }
 
         }
