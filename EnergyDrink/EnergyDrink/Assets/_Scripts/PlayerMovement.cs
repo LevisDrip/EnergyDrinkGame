@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool HasDied;
+    public float GameOver;
+
     public float Speed;
     public float MoveSpeed;
 
@@ -30,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     Quaternion TargetRotation;
     float RotSpeed = 45;
 
+    
     void Start()
     {
         Speed = MoveSpeed;
@@ -52,12 +56,20 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Sliding -= Time.deltaTime;
+        GameOver -= Time.deltaTime;
 
         if (isStuck && Input.GetKeyDown(KeyCode.Space))
         {
             escapeBearTrapNumber--;
         }
 
+        SceneManager SM = GetComponent<SceneManager>();
+
+        if (GameOver <= 0 && HasDied)
+        {
+            SM.Game = false;
+            SM.LoadMenu();
+        }
 
         Movement();
     }
@@ -132,8 +144,14 @@ public class PlayerMovement : MonoBehaviour
 
         if(collision.gameObject.tag == "SpikeObstacle" || collision.gameObject.tag == "OutOfBounds")
         {
+            
+
+            HasDied = true;
+            GameOver = 5;
             MoveSpeed = 0;
             Destroy(gameObject);    
+
+            
         }
 
         if (collision.gameObject.tag == "Energy")
