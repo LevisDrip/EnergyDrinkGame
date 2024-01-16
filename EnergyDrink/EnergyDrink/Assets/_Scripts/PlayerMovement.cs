@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool HasDied;
+    public float GameOver;
+
     public float Speed;
     public float MoveSpeed;
 
@@ -32,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        HasDied = false;
+
         Speed = MoveSpeed;
 
         rigidBody = GetComponent<Rigidbody2D>();
@@ -52,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Sliding -= Time.deltaTime;
+        GameOver -= Time.deltaTime;
 
         if (isStuck && Input.GetKeyDown(KeyCode.Space))
         {
@@ -133,7 +140,11 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.tag == "SpikeObstacle" || collision.gameObject.tag == "OutOfBounds")
         {
             MoveSpeed = 0;
-            Destroy(gameObject);    
+            Destroy(gameObject);
+            GameOver = 5;
+            HasDied = true;
+
+
         }
 
         if (collision.gameObject.tag == "Energy")
