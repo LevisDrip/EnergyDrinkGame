@@ -1681,51 +1681,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &694229477
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 694229479}
-  - component: {fileID: 694229478}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &694229478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694229477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e94a9299c65a543ad629e87b717236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Game: 0
---- !u!4 &694229479
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694229477}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5096793, y: -7.6103945, z: 11.807946}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &809451644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,11 +1712,8 @@ Transform:
   m_Children:
   - {fileID: 826487222}
   - {fileID: 1244059724}
-<<<<<<< Updated upstream
-=======
   - {fileID: 1554058242}
   - {fileID: 872663286}
->>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &826487221
@@ -3085,8 +3037,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1461374247
 GameObject:
   m_ObjectHideFlags: 0
@@ -3500,7 +3450,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
->>>>>>> Stashed changes
 --- !u!1 &1672967749
 GameObject:
   m_ObjectHideFlags: 0
@@ -4124,11 +4073,6 @@ SceneRoots:
   - {fileID: 249274303}
   - {fileID: 502062660}
   - {fileID: 382571981}
-<<<<<<< Updated upstream
-=======
   - {fileID: 1778050076}
   - {fileID: 452444141}
->>>>>>> Stashed changes
   - {fileID: 809451645}
-  - {fileID: 1778050076}
-  - {fileID: 694229479}
