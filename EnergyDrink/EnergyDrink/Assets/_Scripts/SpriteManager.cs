@@ -25,7 +25,7 @@ public class SpriteManager : MonoBehaviour
             animator.SetBool("IsGrounded", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && playerMovement.SlideCoolDown <= 0)
+        if (Input.GetKeyDown(KeyCode.F) && playerMovement.SlideCoolDown <= 0)
         {
             animator.SetTrigger("Slide");
             Invoke("stopSliding", 2f);

@@ -15,6 +15,7 @@ TagManager:
   - World3Start
   - World4Start
   - World5Start
+  - EndTrigger
   layers:
   - Default
   - TransparentFX

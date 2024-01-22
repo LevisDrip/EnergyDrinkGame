@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    public bool Game;
+    public bool InGame;
 
     public void Update()
     {
-        if(Input.GetKey(KeyCode.LeftShift) && !Game)
+       
+
+        if (Input.GetKey(KeyCode.LeftShift) && !InGame)
         {
-            Game = true;
             LoadGame();
         }
     }
@@ -19,10 +20,12 @@ public class SceneManager : MonoBehaviour
     public void LoadGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        InGame = true;
     }
 
     public void LoadMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        InGame = false;
     }
 }

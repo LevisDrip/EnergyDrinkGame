@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public bool HasDied;
     public float GameOver;
+
+    public GameObject Explanation;
+    public GameObject Death;
+    public GameObject Win;
+
+    public float ExplainThis;
 
     public float Speed;
     public float MoveSpeed;
@@ -36,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
+        Win.SetActive(false);
+        Death.SetActive(false);
+
+        ExplainThis = 5;
+
         Speed = MoveSpeed;
 
         rigidBody = GetComponent<Rigidbody2D>();
@@ -67,8 +79,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (GameOver <= 0 && HasDied)
         {
-            SM.Game = false;
+            
             SM.LoadMenu();
+        }
+
+        ExplainThis -= Time.deltaTime;
+
+        if(ExplainThis <= 0)
+        {
+            Explanation.SetActive(false);
         }
 
         Movement();
@@ -88,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && !HasSlided)
+        if (Input.GetKeyDown(KeyCode.F) && !HasSlided)
         {
             Debug.Log("Slidin");
 
@@ -145,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.tag == "SpikeObstacle" || collision.gameObject.tag == "OutOfBounds")
         {
             
-
+            Death.SetActive(true);
             HasDied = true;
             GameOver = 5;
             MoveSpeed = 0;
@@ -161,6 +180,16 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             MoveSpeed += 0.5f;
             Speed = MoveSpeed;
+        }
+
+        if(collision.gameObject.tag == "EndTrigger")
+        {
+            Win.SetActive(true);
+            GameOver = 5;
+            HasDied = true;
+
+            Speed = 0;
+            MoveSpeed = 0;
         }
 
     }
